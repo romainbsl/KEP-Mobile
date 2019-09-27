@@ -3,6 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     id("kotlin-multiplatform")
+    id("kotlinx-serialization")
 }
 repositories {
     mavenCentral()
@@ -32,11 +33,43 @@ kotlin {
         }
 
         sourceSets {
-            getByName("commonMain").dependencies {
-                implementation("org.jetbrains.kotlin:kotlin-stdlib-common")
+            // kotlin libraries
+            val coroutinesVersion: String by extra
+            val ktorVersion: String by extra
+            val serializationVersion: String by extra
+            val commonMain by getting {
+                dependencies {
+                    implementation("org.jetbrains.kotlin:kotlin-stdlib-common")
+                    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-common:$coroutinesVersion")
+                    implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime-common:$serializationVersion")
+
+                    implementation("io.ktor:ktor-client-core:$ktorVersion")
+                    implementation("io.ktor:ktor-client-json:$ktorVersion")
+                    implementation("io.ktor:ktor-client-serialization:$ktorVersion")
+                }
             }
-            getByName("androidMain").dependencies {
-                implementation("org.jetbrains.kotlin:kotlin-stdlib")
+            val androidMain by getting {
+                dependencies {
+                    implementation("org.jetbrains.kotlin:kotlin-stdlib")
+                    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
+                    implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime:$serializationVersion")
+
+                    implementation("io.ktor:ktor-client-core-jvm:$ktorVersion")
+                    implementation("io.ktor:ktor-client-json-jvm:$ktorVersion")
+                    implementation("io.ktor:ktor-client-serialization-jvm:$ktorVersion")
+                    implementation("io.ktor:ktor-client-apache:$ktorVersion")
+                }
+            }
+            val iosMain by getting {
+                dependencies {
+                    implementation("ororg.jetbrains.kotlinx:kotlinx-coroutines-core-native:$coroutinesVersion")
+                    implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime-native:$serializationVersion")
+
+                    implementation("io.ktor:ktor-client-ios:$ktorVersion")
+                    implementation("io.ktor:ktor-client-core-ios:$ktorVersion")
+                    implementation("io.ktor:ktor-client-json-ios:$ktorVersion")
+                    implementation("io.ktor:ktor-client-serialization-native:$ktorVersion")
+                }
             }
         }
     }
@@ -61,10 +94,12 @@ val packForXcode by tasks.creating(Sync::class) {
     /// generate a helpful ./gradlew wrapper with embedded Java path
     doLast {
         val gradlew = File(targetDir, "gradlew")
-        gradlew.writeText("#!/bin/bash\n"
-                + "export 'JAVA_HOME=${System.getProperty("java.home")}'\n"
-                + "cd '${rootProject.rootDir}'\n"
-                + "./gradlew \$@\n")
+        gradlew.writeText(
+            "#!/bin/bash\n"
+                    + "export 'JAVA_HOME=${System.getProperty("java.home")}'\n"
+                    + "cd '${rootProject.rootDir}'\n"
+                    + "./gradlew \$@\n"
+        )
         gradlew.setExecutable(true)
     }
 }
