@@ -27,7 +27,7 @@ kotlin {
         iOSTarget("ios") {
             binaries {
                 framework {
-                    baseName = "SharedCode"
+                    baseName = "kep-common"
                 }
             }
         }
@@ -62,12 +62,12 @@ kotlin {
             }
             val iosMain by getting {
                 dependencies {
-                    implementation("ororg.jetbrains.kotlinx:kotlinx-coroutines-core-native:$coroutinesVersion")
+                    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-native:$coroutinesVersion")
                     implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime-native:$serializationVersion")
 
+                    implementation("io.ktor:ktor-client-core-native:$ktorVersion")
                     implementation("io.ktor:ktor-client-ios:$ktorVersion")
-                    implementation("io.ktor:ktor-client-core-ios:$ktorVersion")
-                    implementation("io.ktor:ktor-client-json-ios:$ktorVersion")
+                    implementation("io.ktor:ktor-client-json-native:$ktorVersion")
                     implementation("io.ktor:ktor-client-serialization-native:$ktorVersion")
                 }
             }

@@ -5,8 +5,8 @@ buildscript {
             // kotlin
             set("kotlinVersion", "1.3.50")
             // kotlin libraries
-            set("coroutinesVersion", "1.1.1")
-            set("ktorVersion", "1.3.0-beta-1")
+            set("coroutinesVersion", "1.3.1")
+            set("ktorVersion", "1.2.4")
             set("serializationVersion", "0.13.0")
             // Android
             set("androidGradlePluginVersion", "3.5.0")
@@ -17,6 +17,8 @@ buildscript {
         google()
         mavenCentral()
         jcenter()
+        maven(url = "https://kotlin.bintray.com/kotlinx")
+        maven(url = "https://dl.bintray.com/jetbrains/kotlin-native-dependencies")
     }
 
     dependencies {
@@ -32,6 +34,9 @@ buildscript {
 allprojects{
     repositories {
         google()
+        mavenCentral()
         jcenter()
+        maven(url = "https://kotlin.bintray.com/kotlinx")
+        maven(url = "https://dl.bintray.com/jetbrains/kotlin-native-dependencies")
     }
 }

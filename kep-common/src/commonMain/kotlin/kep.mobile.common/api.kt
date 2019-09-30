@@ -1,4 +1,4 @@
-package kep.mobile.common.api
+package kep.mobile.common
 
 import io.ktor.client.HttpClient
 import io.ktor.client.features.json.JsonFeature
@@ -10,12 +10,16 @@ import io.ktor.http.HttpHeaders
 import io.ktor.http.takeFrom
 import kep.mobile.common.data.Speaker
 import kep.mobile.common.data.Talk
+import kotlinx.serialization.list
+
+expect val endPoint: String
 
 class KotlinEverywhereParisApi {
-    private val endPoint = "http://localhost:8080"
     private val client = HttpClient {
         install(JsonFeature) {
-            serializer = KotlinxSerializer()
+            serializer = KotlinxSerializer().apply {
+                register(Speaker.serializer().list)
+            }
         }
     }
 
