@@ -5,9 +5,7 @@ plugins {
     id("kotlin-multiplatform")
     id("kotlinx-serialization")
 }
-repositories {
-    mavenCentral()
-}
+
 kotlin {
     targets {
         jvm("android") {
@@ -37,38 +35,44 @@ kotlin {
             val coroutinesVersion: String by extra
             val ktorVersion: String by extra
             val serializationVersion: String by extra
+
+            fun kotlinx(module: String, version: String) = "org.jetbrains.kotlinx:kotlinx-$module:$version"
+            fun coroutines(module: String = "") = kotlinx("coroutines-core$module", coroutinesVersion)
+            fun serialization(module: String = "") = kotlinx("serialization-runtime$module", serializationVersion)
+            fun ktorClient(module: String, version: String = ktorVersion) = "io.ktor:ktor-client-$module:$version"
+
             val commonMain by getting {
                 dependencies {
                     implementation("org.jetbrains.kotlin:kotlin-stdlib-common")
-                    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-common:$coroutinesVersion")
-                    implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime-common:$serializationVersion")
+                    implementation(coroutines("-common"))
+                    implementation(serialization("-common"))
 
-                    implementation("io.ktor:ktor-client-core:$ktorVersion")
-                    implementation("io.ktor:ktor-client-json:$ktorVersion")
-                    implementation("io.ktor:ktor-client-serialization:$ktorVersion")
+                    implementation(ktorClient("core"))
+                    implementation(ktorClient("json"))
+                    implementation(ktorClient("serialization"))
                 }
             }
             val androidMain by getting {
                 dependencies {
                     implementation("org.jetbrains.kotlin:kotlin-stdlib")
-                    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
-                    implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime:$serializationVersion")
+                    implementation(coroutines())
+                    implementation(serialization())
 
-                    implementation("io.ktor:ktor-client-core-jvm:$ktorVersion")
-                    implementation("io.ktor:ktor-client-json-jvm:$ktorVersion")
-                    implementation("io.ktor:ktor-client-serialization-jvm:$ktorVersion")
-                    implementation("io.ktor:ktor-client-apache:$ktorVersion")
+                    implementation(ktorClient("core-jvm"))
+                    implementation(ktorClient("json-jvm"))
+                    implementation(ktorClient("serialization-jvm"))
+                    implementation(ktorClient("apache"))
                 }
             }
             val iosMain by getting {
                 dependencies {
-                    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core-native:$coroutinesVersion")
-                    implementation("org.jetbrains.kotlinx:kotlinx-serialization-runtime-native:$serializationVersion")
+                    implementation(coroutines("-native"))
+                    implementation(serialization("-native"))
 
-                    implementation("io.ktor:ktor-client-core-native:$ktorVersion")
-                    implementation("io.ktor:ktor-client-ios:$ktorVersion")
-                    implementation("io.ktor:ktor-client-json-native:$ktorVersion")
-                    implementation("io.ktor:ktor-client-serialization-native:$ktorVersion")
+                    implementation(ktorClient("core-native"))
+                    implementation(ktorClient("ios"))
+                    implementation(ktorClient("json-native"))
+                    implementation(ktorClient("serialization-native"))
                 }
             }
         }
