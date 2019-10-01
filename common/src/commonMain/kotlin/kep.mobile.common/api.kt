@@ -14,7 +14,7 @@ import kotlinx.serialization.list
 
 expect val endPoint: String
 
-class KotlinEverywhereParisApi {
+class DataApi {
     private val client = HttpClient {
         install(JsonFeature) {
             serializer = KotlinxSerializer().apply {

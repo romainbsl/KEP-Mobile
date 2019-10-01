@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.jetbrains.handson.mpp.mobile.R
-import kep.mobile.common.KotlinEverywhereParisApi
+import kep.mobile.common.DataApi
 import kotlinx.coroutines.*
 
 class MainActivity : AppCompatActivity() {
@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val api = KotlinEverywhereParisApi()
+        val api = DataApi()
 
         uiScope.launch {
 
