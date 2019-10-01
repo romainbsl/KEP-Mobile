@@ -12,7 +12,23 @@
 		A14B53FE234228B70017DD2B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A14B53FC234228B70017DD2B /* Main.storyboard */; };
 		A14B5400234228B90017DD2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A14B53FF234228B90017DD2B /* Assets.xcassets */; };
 		A14B5403234228B90017DD2B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A14B5401234228B90017DD2B /* LaunchScreen.storyboard */; };
+		A14B540B23422BDE0017DD2B /* kep_common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A14B540A23422BDE0017DD2B /* kep_common.framework */; };
+		A14B540C23422BDE0017DD2B /* kep_common.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A14B540A23422BDE0017DD2B /* kep_common.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A14B540D23422BDE0017DD2B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A14B540C23422BDE0017DD2B /* kep_common.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		A14B53F5234228B70017DD2B /* kepios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kepios.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -22,6 +38,7 @@
 		A14B53FF234228B90017DD2B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A14B5402234228B90017DD2B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A14B5404234228B90017DD2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A14B540A23422BDE0017DD2B /* kep_common.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = kep_common.framework; path = "../../common/build/xcode-frameworks/kep_common.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A14B540B23422BDE0017DD2B /* kep_common.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -38,6 +56,7 @@
 		A14B53EC234228B70017DD2B = {
 			isa = PBXGroup;
 			children = (
+				A14B540A23422BDE0017DD2B /* kep_common.framework */,
 				A14B53F7234228B70017DD2B /* kepios */,
 				A14B53F6234228B70017DD2B /* Products */,
 			);
@@ -71,9 +90,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A14B5407234228B90017DD2B /* Build configuration list for PBXNativeTarget "kepios" */;
 			buildPhases = (
+				A14B540E23422C6C0017DD2B /* Pack common Kotlin code for iOS */,
 				A14B53F1234228B70017DD2B /* Sources */,
 				A14B53F2234228B70017DD2B /* Frameworks */,
 				A14B53F3234228B70017DD2B /* Resources */,
+				A14B540D23422BDE0017DD2B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -129,6 +150,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A14B540E23422C6C0017DD2B /* Pack common Kotlin code for iOS */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Pack common Kotlin code for iOS";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd \"$SRCROOT/../../common/build/xcode-frameworks\"\n./gradlew :common:packForXCode -PXCODE_CONFIGURATION=${CONFIGURATION}\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A14B53F1234228B70017DD2B /* Sources */ = {
@@ -283,12 +325,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../../common/build/xcode-frameworks";
 				INFOPLIST_FILE = kepios/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = kep.mobile.kepios;
+				PRODUCT_BUNDLE_IDENTIFIER = kep.mobile.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -300,12 +343,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../../common/build/xcode-frameworks";
 				INFOPLIST_FILE = kepios/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = kep.mobile.kepios;
+				PRODUCT_BUNDLE_IDENTIFIER = kep.mobile.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

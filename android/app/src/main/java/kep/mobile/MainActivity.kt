@@ -4,35 +4,34 @@ import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.jetbrains.handson.mpp.mobile.R
-import kep.mobile.common.DataApi
-import kotlinx.coroutines.*
+import kep.mobile.common.InjectorCommon
+import kep.mobile.common.TalkPresenter
+import kep.mobile.common.TalkView
+import kep.mobile.common.model.data.Talk
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), TalkView {
 
-    private val job = Job()
-    private val uiScope = CoroutineScope(Dispatchers.Main + job)
+    private lateinit var presenter: TalkPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val api = DataApi()
+        presenter = InjectorCommon.provideTalkPresenter()
+        presenter.attachView(this)
+    }
 
-        uiScope.launch {
+    override fun onStart() {
+        super.onStart()
+        presenter.getTalkList()
+    }
 
-            val speakers = async(Dispatchers.IO) {
-                api.getSpeakers().map { it.name }.joinToString("\n")
-            }
-            println(speakers.await())
-//            val talks = api.getTalks().map { it.title }.joinToString("\n")
-//            println(talks)
-
-            findViewById<TextView>(R.id.main_text).text = speakers.await()
-        }
+    override fun onSuccessGetTalkList(talkList: List<Talk>) {
+        findViewById<TextView>(R.id.main_text).text = talkList.map { it.title }.joinToString("\n - ")
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        job.cancel()
+        presenter.detachView()
     }
 }
