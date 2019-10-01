@@ -19,6 +19,7 @@ class DataApi {
         install(JsonFeature) {
             serializer = KotlinxSerializer().apply {
                 register(Speaker.serializer().list)
+                register(Talk.serializer().list)
             }
         }
     }
