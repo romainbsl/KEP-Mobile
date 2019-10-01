@@ -8,8 +8,8 @@ import io.ktor.client.request.get
 import io.ktor.client.request.header
 import io.ktor.http.HttpHeaders
 import io.ktor.http.takeFrom
-import kep.mobile.common.data.Speaker
-import kep.mobile.common.data.Talk
+import kep.mobile.common.model.data.Speaker
+import kep.mobile.common.model.data.Talk
 import kotlinx.serialization.list
 
 expect val endPoint: String

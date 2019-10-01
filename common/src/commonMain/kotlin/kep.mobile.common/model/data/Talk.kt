@@ -1,4 +1,4 @@
-package kep.mobile.common.data
+package kep.mobile.common.model.data
 
 import kotlinx.serialization.Serializable
 
