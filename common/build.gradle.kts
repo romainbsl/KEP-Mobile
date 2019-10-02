@@ -52,6 +52,13 @@ kotlin {
                     implementation(ktorClient("serialization"))
                 }
             }
+            val commonTest by getting {
+                dependencies {
+                    implementation(kotlin("test-common"))
+                    implementation(kotlin("test-annotations-common"))
+//                    implementation("io.mockk:mockk:1.9.3")
+                }
+            }
             val androidMain by getting {
                 dependencies {
                     implementation("org.jetbrains.kotlin:kotlin-stdlib")
@@ -62,6 +69,12 @@ kotlin {
                     implementation(ktorClient("json-jvm"))
                     implementation(ktorClient("serialization-jvm"))
                     implementation(ktorClient("apache"))
+                }
+            }
+            val androidTest by getting {
+                dependencies {
+                    implementation(kotlin("test"))
+                    implementation(kotlin("test-junit"))
                 }
             }
             val iosMain by getting {
