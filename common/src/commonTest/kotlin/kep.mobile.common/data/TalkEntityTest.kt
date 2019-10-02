@@ -1,6 +1,6 @@
 package kep.mobile.common.data
 
-import kep.mobile.common.domain.model.Speaker
+import kep.mobile.common.FakeData
 import kep.mobile.common.domain.model.Type
 import kep.mobile.common.domain.model.toModel
 import kotlinx.serialization.UnstableDefault
@@ -35,27 +35,12 @@ class TalkEntityTest {
 
     @Test
     fun `TalkEntity to Model`() {
-        val talkEntity = TalkEntity(
-            id = "androidx-coroutines",
-            title = "AndroidX + coroutines = <3",
-            description = "Le framework des coroutines est un outil révolutionnaire pour gérer l'asynchronisme et la concurrence.",
-            speakers = listOf("geoffrey-metais"),
-            type = Type.TALK
-        )
-
-        val speakers = listOf(
-            Speaker(
-            id = "geoffrey-metais",
-            name = "Geoffrey Métais",
-            company = "VideoLAN",
-            description = "Lead Android developer at VideoLAN and Videolabs.")
-        )
-        val talk = talkEntity.toModel(speakers)
+        val talk = FakeData.Entity.androidx_coroutines.toModel(FakeData.Model.speakers)
 
         assertEquals(talk.id, "androidx-coroutines")
         assertEquals(talk.title, "AndroidX + coroutines = <3")
         assertEquals(talk.description, "Le framework des coroutines est un outil révolutionnaire pour gérer l'asynchronisme et la concurrence.")
         assertEquals(talk.type, Type.TALK)
-        assertSame(talk.speakers, speakers)
+        assertSame(talk.speakers, FakeData.Model.speakers)
     }
 }

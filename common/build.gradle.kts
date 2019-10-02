@@ -56,7 +56,7 @@ kotlin {
                 dependencies {
                     implementation(kotlin("test-common"))
                     implementation(kotlin("test-annotations-common"))
-//                    implementation("io.mockk:mockk:1.9.3")
+                    implementation("io.mockk:mockk:1.9.3")
                 }
             }
             val androidMain by getting {
@@ -75,6 +75,7 @@ kotlin {
                 dependencies {
                     implementation(kotlin("test"))
                     implementation(kotlin("test-junit"))
+                    implementation("io.mockk:mockk:1.9.3")
                 }
             }
             val iosMain by getting {
