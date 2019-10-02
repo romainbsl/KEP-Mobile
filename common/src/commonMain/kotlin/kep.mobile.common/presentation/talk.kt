@@ -1,13 +1,14 @@
-package kep.mobile.common
+package kep.mobile.common.presentation
 
-import kep.mobile.common.model.data.Talk
-import kep.mobile.common.presentation.BasePresenter
+import kep.mobile.common.UIDispatcher
+import kep.mobile.common.data.KepApi
+import kep.mobile.common.data.TalkEntity
 import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
 class TalkPresenter(
-    private var api: DataApi,
-    coroutineContext: CoroutineContext = ApplicationDispatcher
+    private val api: KepApi,
+    coroutineContext: CoroutineContext = UIDispatcher // TODO move onto ApplicationDispatcher
 ) : BasePresenter<TalkView>(coroutineContext) {
 
     override fun onViewAttached(view: TalkView) {
@@ -16,7 +17,6 @@ class TalkPresenter(
 
     fun getTalkList() {
         scope.launch {
-
             val talkList = api.getTalks()
             if (talkList.isNotEmpty()) {
                 view?.onSuccessGetTalkList(talkList)
@@ -26,6 +26,6 @@ class TalkPresenter(
 }
 
 interface TalkView {
-    fun onSuccessGetTalkList(talkList: List<Talk>)
+    fun onSuccessGetTalkList(talkList: List<TalkEntity>)
 }
 
