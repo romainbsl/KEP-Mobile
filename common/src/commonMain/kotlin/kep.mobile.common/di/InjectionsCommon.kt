@@ -1,7 +1,8 @@
 package kep.mobile.common
 
 import kep.mobile.common.data.KepApi
-import kep.mobile.common.presentation.TalkPresenter
+import kep.mobile.common.domain.usecase.GetTalkList
+import kep.mobile.common.presentation.TalkListPresenter
 import kotlin.native.concurrent.ThreadLocal
 
 @ThreadLocal
@@ -14,9 +15,16 @@ object InjectorCommon {
     }
 
     /**
+     * USECASE
+     */
+    private val getTalkList: GetTalkList by lazy {
+        GetTalkList(api)
+    }
+
+    /**
      * PRESENTER
      */
-    fun provideTalkPresenter(): TalkPresenter {
-        return TalkPresenter(api)
+    fun provideTalkPresenter(): TalkListPresenter {
+        return TalkListPresenter(getTalkList)
     }
 }

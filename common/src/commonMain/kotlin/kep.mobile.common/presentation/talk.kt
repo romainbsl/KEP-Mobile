@@ -1,31 +1,30 @@
 package kep.mobile.common.presentation
 
-import kep.mobile.common.UIDispatcher
-import kep.mobile.common.data.KepApi
-import kep.mobile.common.data.TalkEntity
+import kep.mobile.common.ApplicationDispatcher
+import kep.mobile.common.domain.model.Talk
+import kep.mobile.common.domain.usecase.GetTalkList
+import kep.mobile.common.domain.usecase.UseCase
 import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
-class TalkPresenter(
-    private val api: KepApi,
-    coroutineContext: CoroutineContext = UIDispatcher // TODO move onto ApplicationDispatcher
+class TalkListPresenter(
+    private val getTalkList: GetTalkList,
+    coroutineContext: CoroutineContext = ApplicationDispatcher
 ) : BasePresenter<TalkView>(coroutineContext) {
 
     override fun onViewAttached(view: TalkView) {
-
-    }
-
-    fun getTalkList() {
         scope.launch {
-            val talkList = api.getTalks()
-            if (talkList.isNotEmpty()) {
-                view?.onSuccessGetTalkList(talkList)
-            }
+            getTalkList(
+                UseCase.None,
+                onSuccess = { view.onSuccessGetTalkList(it) },
+                onFailure = { view.onFailureGetTalkList(it) }
+            )
         }
     }
 }
 
 interface TalkView {
-    fun onSuccessGetTalkList(talkList: List<TalkEntity>)
+    fun onSuccessGetTalkList(talkList: List<Talk>)
+    fun onFailureGetTalkList(e: Exception)
 }
 

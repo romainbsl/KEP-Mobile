@@ -11,7 +11,7 @@ import kep_common
 
 class ViewController: UIViewController, TalkView {
 
-    private var presenter: TalkPresenter!
+    private var presenter: TalkListPresenter!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,8 +30,6 @@ class ViewController: UIViewController, TalkView {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         presenter.attachView(view: self)
-        
-        presenter.getTalkList()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -43,7 +41,7 @@ class ViewController: UIViewController, TalkView {
         presenter = InjectorCommon.init().provideTalkPresenter()
     }
     
-    func onSuccessGetTalkList(talkList: [TalkEntity]) {
+    func onSuccessGetTalkList(talkList: [Talk]) {
         var talks = ""
         
         for talk in talkList {
@@ -57,6 +55,10 @@ class ViewController: UIViewController, TalkView {
         label.font = label.font.withSize(20)
         label.text = talks
         view.addSubview(label)
+    }
+    
+    func onFailureGetTalkList(e: KotlinException) {
+        print(e.message ?? "error")
     }
 }
 
