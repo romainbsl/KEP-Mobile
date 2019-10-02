@@ -5,9 +5,9 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.jetbrains.handson.mpp.mobile.R
 import kep.mobile.common.InjectorCommon
-import kep.mobile.common.TalkPresenter
-import kep.mobile.common.TalkView
-import kep.mobile.common.model.data.Talk
+import kep.mobile.common.data.TalkEntity
+import kep.mobile.common.presentation.TalkPresenter
+import kep.mobile.common.presentation.TalkView
 
 class MainActivity : AppCompatActivity(), TalkView {
 
@@ -26,8 +26,8 @@ class MainActivity : AppCompatActivity(), TalkView {
         presenter.getTalkList()
     }
 
-    override fun onSuccessGetTalkList(talkList: List<Talk>) {
-        findViewById<TextView>(R.id.main_text).text = talkList.map { it.title }.joinToString("\n - ")
+    override fun onSuccessGetTalkList(talkList: List<TalkEntity>) {
+        findViewById<TextView>(R.id.main_text).text = talkList.joinToString("\n - ") { it.title }
     }
 
     override fun onDestroy() {

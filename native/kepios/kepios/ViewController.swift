@@ -43,7 +43,7 @@ class ViewController: UIViewController, TalkView {
         presenter = InjectorCommon.init().provideTalkPresenter()
     }
     
-    func onSuccessGetTalkList(talkList: [Talk]) {
+    func onSuccessGetTalkList(talkList: [TalkEntity]) {
         var talks = ""
         
         for talk in talkList {
