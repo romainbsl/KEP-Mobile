@@ -10,9 +10,8 @@ import io.ktor.http.HttpHeaders
 import io.ktor.http.URLProtocol
 import kotlinx.serialization.list
 
-expect val BASE_URL: String
-expect val BASE_PORT: Int
-expect val URL_PROTOCOL: URLProtocol
+val BASE_URL: String = "everywhere.kotlin.paris"
+val URL_PROTOCOL: URLProtocol = URLProtocol.HTTPS
 
 class KepApi {
     private val client = HttpClient {
@@ -48,7 +47,6 @@ class KepApi {
     private fun HttpRequestBuilder.apiUrl(path: String) {
         url {
             host = BASE_URL
-            port = BASE_PORT
             protocol = URL_PROTOCOL
             encodedPath = path
             header(HttpHeaders.Accept, "javascript/json")
