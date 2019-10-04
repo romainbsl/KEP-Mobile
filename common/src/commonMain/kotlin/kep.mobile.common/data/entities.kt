@@ -20,6 +20,6 @@ data class TalkEntity(
     val id: String,
     val title: String,
     val description: String,
-    val speakers: List<String>,
+    val speakers: List<String> = emptyList(),
     val type: Type = Type.TALK
 )
