@@ -8,6 +8,7 @@ import io.ktor.client.request.get
 import io.ktor.client.request.header
 import io.ktor.http.HttpHeaders
 import io.ktor.http.URLProtocol
+import kotlinx.serialization.json.Json
 import kotlinx.serialization.list
 
 val BASE_URL: String = "everywhere.kotlin.paris"
@@ -16,10 +17,7 @@ val URL_PROTOCOL: URLProtocol = URLProtocol.HTTPS
 class KepApi {
     private val client = HttpClient {
         install(JsonFeature) {
-            serializer = KotlinxSerializer().apply {
-                register(SpeakerEntity.serializer().list)
-                register(TalkEntity.serializer().list)
-            }
+            serializer = KotlinxSerializer()
         }
     }
 
@@ -27,19 +25,25 @@ class KepApi {
     private val talkList = mutableListOf<TalkEntity>()
 
     suspend fun getSpeakers(): List<SpeakerEntity> {
-        if (speakerList.isEmpty())
-            speakerList.addAll(client.get {
+        if (speakerList.isEmpty()) {
+            val json = client.get<String> {
                 apiUrl("data/speakers.json")
-            } as List<SpeakerEntity>)
+            }
+
+            speakerList.addAll(Json.parse(SpeakerEntity.serializer().list, json))
+        }
 
         return speakerList
     }
 
     suspend fun getTalks(): List<TalkEntity> {
-        if (talkList.isEmpty())
-            talkList.addAll(client.get {
+        if (talkList.isEmpty()) {
+            val json = client.get<String> {
                 apiUrl("data/talks.json")
-            } as List<TalkEntity>)
+            }
+
+            talkList.addAll(Json.parse(TalkEntity.serializer().list, json))
+        }
 
         return talkList
     }
