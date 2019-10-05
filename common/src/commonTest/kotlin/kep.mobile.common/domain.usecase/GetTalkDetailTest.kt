@@ -13,7 +13,7 @@ import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 import kotlin.test.fail
 
-class GetTalkDetilTest {
+class GetTalkDetailTest {
         private val api = mockk<KepApi>()
         private val getTalkDetail = GetTalkDetail(api)
 
@@ -32,7 +32,7 @@ class GetTalkDetilTest {
             // not possible in common modules
             suspend {
                 getTalkDetail(
-                    FakeData.Model.androidx_coroutines,
+                    FakeData.Model.androidx_coroutines.id,
                     onSuccess = {
                         print(it)
                         assertEquals(FakeData.Model.androidx_coroutines, it)
