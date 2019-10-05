@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">KotlinMPP</string>
+    <string name="app_name">K/E Paris 2019</string>
+    <string name="title_talk_list">Kotlin/Everywhere Paris 2019</string>
 </resources>
