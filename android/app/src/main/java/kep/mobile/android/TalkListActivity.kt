@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
@@ -15,7 +16,6 @@ import kep.mobile.common.presentation.TalkListPresenter
 import kep.mobile.common.presentation.TalkListView
 import kotlinx.android.synthetic.main.activity_talk_list.*
 import kotlinx.android.synthetic.main.talk_list.*
-import kotlinx.android.synthetic.main.talk_list_content.view.*
 
 /**
  * An activity representing a list of Pings. This activity
@@ -34,11 +34,10 @@ class TalkListActivity : AppCompatActivity(), TalkListView {
         setContentView(R.layout.activity_talk_list)
 
         setSupportActionBar(toolbar)
-//        toolbar.title = title
 
-        getSupportActionBar()?.setDisplayHomeAsUpEnabled(false);
-        getSupportActionBar()?.setIcon(getResources().getDrawable(R.mipmap.ic_title))
-        getSupportActionBar()?.setTitle(title);
+        supportActionBar?.setDisplayHomeAsUpEnabled(false);
+        supportActionBar?.setIcon(resources.getDrawable(R.mipmap.ic_title))
+        supportActionBar?.title = title;
 
         about.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
@@ -48,6 +47,7 @@ class TalkListActivity : AppCompatActivity(), TalkListView {
         presenter = InjectorCommon.provideTalkListPresenter()
 
     }
+
     override fun onStart() {
         super.onStart()
         presenter.attachView(this)
@@ -62,7 +62,7 @@ class TalkListActivity : AppCompatActivity(), TalkListView {
             private val parentActivity: TalkListActivity,
             private val values: List<Talk>
     ) :
-            RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder>() {
+            RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.TalkViewHolder>() {
 
         private val onClickListener: View.OnClickListener
 
@@ -76,16 +76,23 @@ class TalkListActivity : AppCompatActivity(), TalkListView {
             }
         }
 
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TalkViewHolder {
             val view = LayoutInflater.from(parent.context)
                     .inflate(R.layout.talk_list_content, parent, false)
-            return ViewHolder(view)
+            return TalkViewHolder(view)
         }
 
-        override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        override fun onBindViewHolder(holder: TalkViewHolder, position: Int) {
             val item = values[position]
-//            holder.idView.text = item.id
-            holder.contentView.text = item.title
+
+            with(holder) {
+                setTitle(item.title)
+                setStartsAt(item.timeslot)
+                setDetails(item.room)
+
+                isFirstInTimeGroup = position == 0 ||
+                        (values[position - 1]).timeslot != item.timeslot
+            }
 
             with(holder.itemView) {
                 tag = item
@@ -95,14 +102,39 @@ class TalkListActivity : AppCompatActivity(), TalkListView {
 
         override fun getItemCount() = values.size
 
-        inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-            val idView: TextView = view.id_text
-            val contentView: TextView = view.content
+        inner class TalkViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+            private val contentView = view.findViewById<TextView>(R.id.content)
+            private val timeslotView = view.findViewById<TextView>(R.id.timeslot)
+            private val roomView = view.findViewById<TextView>(R.id.room)
+            private val talkLayoutView = view.findViewById<LinearLayout>(R.id.talk_layout)
+
+            var isFirstInTimeGroup: Boolean = false
+                set(value) {
+                    field = value
+                    timeslotView.visibility = if (value) View.VISIBLE else View.INVISIBLE
+                }
+
+            val titleOffset: Int
+                get() = talkLayoutView.left
+
+            fun setTitle(title: String) {
+                contentView.text = title
+            }
+
+            fun setStartsAt(timeslot: String) {
+                timeslotView.text = timeslot
+            }
+
+            fun setDetails(room: String) {
+                roomView.text = room
+            }
         }
+
     }
 
     override fun onSuccessGetTalkList(talkList: List<Talk>) {
-        talk_list.adapter = SimpleItemRecyclerViewAdapter(this, talkList)
+        talk_list.adapter = SimpleItemRecyclerViewAdapter(this,
+                talkList.sortedWith(compareBy(Talk::timeslot, Talk::title)))
     }
 
     override fun onFailureGetTalkList(e: Exception) {
