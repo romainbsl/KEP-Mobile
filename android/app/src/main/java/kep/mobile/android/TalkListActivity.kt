@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import kep.mobile.common.InjectorCommon
 import kep.mobile.common.domain.model.Talk
+import kep.mobile.common.domain.model.Type
 import kep.mobile.common.presentation.TalkListPresenter
 import kep.mobile.common.presentation.TalkListView
 import kotlinx.android.synthetic.main.activity_talk_list.*
@@ -86,7 +87,15 @@ class TalkListActivity : AppCompatActivity(), TalkListView {
             val item = values[position]
 
             with(holder) {
-                setTitle(item.title)
+                println(item.type)
+                setTitle(
+                    when(item.type) {
+                        Type.CODELAB -> "Codelab: ${item.title}"
+                        Type.WORKSHOP -> "Workshop: ${item.title}"
+                        else -> item.title
+                    }
+                )
+
                 setStartsAt(item.timeslot)
                 setDetails(item.room)
 
@@ -145,5 +154,4 @@ class TalkListActivity : AppCompatActivity(), TalkListView {
         println("Check Internet Connection")
         return true
     }
-
 }

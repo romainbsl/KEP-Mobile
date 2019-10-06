@@ -57,10 +57,9 @@ class TalkDetailFragment : Fragment(), TalkDetailView {
     }
 
     override fun onSuccessGetTalkDetail(talk: Talk) {
-        val toolbar: CollapsingToolbarLayout? = activity?.findViewById(R.id.toolbar_layout)
-
         talk.let {
-            toolbar?.title = it.title
+            rootView.talk_title.text = it.title
+            rootView.talk_speaker.text = it.speakers.sortedBy { it.name }.map { it.name }.joinToString()
             rootView.talk_detail.text = it.description
         }
     }

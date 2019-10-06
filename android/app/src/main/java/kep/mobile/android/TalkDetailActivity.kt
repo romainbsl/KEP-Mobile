@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NavUtils
-import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_talk_detail.*
 
 /**
@@ -16,7 +15,7 @@ class TalkDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_talk_detail)
-        setSupportActionBar(detail_toolbar)
+        setSupportActionBar(toolbar)
 
         // Show the Up button in the action bar.
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
