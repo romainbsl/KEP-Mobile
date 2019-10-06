@@ -8,7 +8,14 @@ data class Talk(
     val description: String,
     val speakers: List<Speaker> = emptyList(),
     val type: Type = Type.TALK
-)
+) {
+    val room: String by lazy {
+        rooms.filterValues { it.contains(id) }.keys.first()
+    }
+    val timeslot: String by lazy {
+        timeslots.filterValues { it.contains(id) }.keys.first()
+    }
+}
 
 enum class Type(val prefix: String?) {
     CODELAB("Codelab"),
