@@ -40,9 +40,8 @@ class TalkListActivity : AppCompatActivity(), TalkListView {
         supportActionBar?.setIcon(resources.getDrawable(R.mipmap.ic_title))
         supportActionBar?.title = title;
 
-        about.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
+        about.setOnClickListener { v ->
+            v.context.startActivity(Intent(v.context, AboutActivity::class.java))
         }
 
         presenter = InjectorCommon.provideTalkListPresenter()

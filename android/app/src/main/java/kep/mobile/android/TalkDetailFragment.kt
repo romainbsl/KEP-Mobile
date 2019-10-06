@@ -1,16 +1,24 @@
 package kep.mobile.android
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.appbar.CollapsingToolbarLayout
 import kep.mobile.common.InjectorCommon
+import kep.mobile.common.data.BASE_URL
+import kep.mobile.common.data.URL_PROTOCOL
+import kep.mobile.common.domain.model.Speaker
 import kep.mobile.common.domain.model.Talk
 import kep.mobile.common.presentation.TalkDetailPresenter
 import kep.mobile.common.presentation.TalkDetailView
 import kotlinx.android.synthetic.main.talk_detail.view.*
+import kotlinx.android.synthetic.main.talk_list_content.view.*
 
 /**
  * A fragment representing a single Talk detail screen.
@@ -56,12 +64,33 @@ class TalkDetailFragment : Fragment(), TalkDetailView {
         println(e.message)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onSuccessGetTalkDetail(talk: Talk) {
         talk.let {
             rootView.talk_title.text = it.title
-            rootView.talk_speaker.text = it.speakers.sortedBy { it.name }.map { it.name }.joinToString()
             rootView.talk_detail.text = it.description
+            rootView.talk_room.text = "${it.timeslot} - ${it.room}"
+
+            if (it.speakers.isEmpty()) return@let
+
+            val speakerListSorted = it.speakers.sortedBy(Speaker::name)
+
+            val speakerPhoto: (String) -> String = { id: String -> "${URL_PROTOCOL.name}://$BASE_URL/speakers/$id.jpg" }
+
+            rootView.img_1.showSpeakerImage(speakerPhoto(speakerListSorted.first().id))
+            if (speakerListSorted.size > 1)
+                rootView.img_2.showSpeakerImage(speakerPhoto(speakerListSorted.last().id))
+
+            rootView.talk_speaker.text = speakerListSorted.joinToString(transform = Speaker::name)
         }
+    }
+
+    private fun ImageView.showSpeakerImage(imageUrl: String) {
+        visibility = View.VISIBLE
+        Glide.with(this@TalkDetailFragment)
+                .load(imageUrl)
+                .apply(RequestOptions.circleCropTransform())
+                .into(this)
     }
 
     companion object {

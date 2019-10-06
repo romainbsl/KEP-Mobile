@@ -29,6 +29,14 @@
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value="kep.mobile.android.TalkListActivity"/>
         </activity>
+        <activity
+                android:name="kep.mobile.android.AboutActivity"
+                android:parentActivityName="kep.mobile.android.AboutActivity"
+                android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value="kep.mobile.android.AboutActivity"/>
+        </activity>
     </application>
 
 </manifest>
