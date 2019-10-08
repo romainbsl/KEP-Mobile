@@ -4,11 +4,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/info_header_background" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:background="#BFBFBF" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
         android:textSize="14sp"
-        android:text="[Coming Soon]\n About K/E Paris 2019"/>
+        android:text="[Coming Soon]\n About K/E Paris 2019 \n\n - Website\n - Twitter\n - Code of conduct"/>
 
 </LinearLayout>
