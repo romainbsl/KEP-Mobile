@@ -1,6 +1,7 @@
 package kep.mobile.android
 
 import android.annotation.SuppressLint
+import android.app.Fragment
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -18,7 +19,6 @@ import kep.mobile.common.domain.model.Talk
 import kep.mobile.common.presentation.TalkDetailPresenter
 import kep.mobile.common.presentation.TalkDetailView
 import kotlinx.android.synthetic.main.talk_detail.view.*
-import kotlinx.android.synthetic.main.talk_list_content.view.*
 
 /**
  * A fragment representing a single Talk detail screen.
@@ -68,20 +68,18 @@ class TalkDetailFragment : Fragment(), TalkDetailView {
     override fun onSuccessGetTalkDetail(talk: Talk) {
         talk.let {
             rootView.talk_title.text = it.title
-            rootView.talk_detail.text = it.description
+            rootView.talk_detail.text = it.content
             rootView.talk_room.text = "${it.timeslot} - ${it.room}"
 
             if (it.speakers.isEmpty()) return@let
 
-            val speakerListSorted = it.speakers.sortedBy(Speaker::name)
-
             val speakerPhoto: (String) -> String = { id: String -> "${URL_PROTOCOL.name}://$BASE_URL/speakers/$id.jpg" }
 
-            rootView.img_1.showSpeakerImage(speakerPhoto(speakerListSorted.first().id))
-            if (speakerListSorted.size > 1)
-                rootView.img_2.showSpeakerImage(speakerPhoto(speakerListSorted.last().id))
+            rootView.img_1.showSpeakerImage(speakerPhoto(it.speakers.first().id))
+            if (it.speakers.size == 2)
+                rootView.img_2.showSpeakerImage(speakerPhoto(it.speakers.last().id))
 
-            rootView.talk_speaker.text = speakerListSorted.joinToString(transform = Speaker::name)
+            rootView.talk_speaker.text = it.speakers.joinToString(transform = Speaker::name)
         }
     }
 

@@ -5,7 +5,7 @@ import kep.mobile.common.data.TalkEntity
 data class Talk(
     val id: String,
     val title: String,
-    val description: String,
+    val content: String,
     val speakers: List<Speaker> = emptyList(),
     val type: Type = Type.TALK
 ) {

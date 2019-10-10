@@ -8,12 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		A14B53F9234228B70017DD2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14B53F8234228B70017DD2B /* AppDelegate.swift */; };
-		A14B53FB234228B70017DD2B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14B53FA234228B70017DD2B /* ViewController.swift */; };
+		A14B53FB234228B70017DD2B /* TalkListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14B53FA234228B70017DD2B /* TalkListViewController.swift */; };
 		A14B53FE234228B70017DD2B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A14B53FC234228B70017DD2B /* Main.storyboard */; };
 		A14B5400234228B90017DD2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A14B53FF234228B90017DD2B /* Assets.xcassets */; };
 		A14B5403234228B90017DD2B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A14B5401234228B90017DD2B /* LaunchScreen.storyboard */; };
 		A14B540B23422BDE0017DD2B /* kep_common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A14B540A23422BDE0017DD2B /* kep_common.framework */; };
 		A14B540C23422BDE0017DD2B /* kep_common.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A14B540A23422BDE0017DD2B /* kep_common.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A1D4C9E5234CBAAF00AA15F1 /* launchscreen.png in Resources */ = {isa = PBXBuildFile; fileRef = A1D4C9E4234CBAAF00AA15F1 /* launchscreen.png */; };
+		A1D4C9F2234DD44D00AA15F1 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D4C9F1234DD44D00AA15F1 /* AboutViewController.swift */; };
+		A1D4C9F4234E0C0E00AA15F1 /* TalkDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D4C9F3234E0C0E00AA15F1 /* TalkDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -33,12 +36,15 @@
 /* Begin PBXFileReference section */
 		A14B53F5234228B70017DD2B /* kepios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kepios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A14B53F8234228B70017DD2B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A14B53FA234228B70017DD2B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A14B53FA234228B70017DD2B /* TalkListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkListViewController.swift; sourceTree = "<group>"; };
 		A14B53FD234228B70017DD2B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A14B53FF234228B90017DD2B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A14B5402234228B90017DD2B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A14B5404234228B90017DD2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A14B540A23422BDE0017DD2B /* kep_common.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = kep_common.framework; path = "../../common/build/xcode-frameworks/kep_common.framework"; sourceTree = "<group>"; };
+		A1D4C9E4234CBAAF00AA15F1 /* launchscreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launchscreen.png; sourceTree = "<group>"; };
+		A1D4C9F1234DD44D00AA15F1 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		A1D4C9F3234E0C0E00AA15F1 /* TalkDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,14 +79,41 @@
 		A14B53F7234228B70017DD2B /* kepios */ = {
 			isa = PBXGroup;
 			children = (
-				A14B53F8234228B70017DD2B /* AppDelegate.swift */,
-				A14B53FA234228B70017DD2B /* ViewController.swift */,
-				A14B53FC234228B70017DD2B /* Main.storyboard */,
-				A14B53FF234228B90017DD2B /* Assets.xcassets */,
-				A14B5401234228B90017DD2B /* LaunchScreen.storyboard */,
+				A1D4C9E7234CBEDE00AA15F1 /* app */,
+				A1D4C9E8234CBEF300AA15F1 /* feature */,
+				A1D4C9E3234CBA6700AA15F1 /* resources */,
 				A14B5404234228B90017DD2B /* Info.plist */,
 			);
 			path = kepios;
+			sourceTree = "<group>";
+		};
+		A1D4C9E3234CBA6700AA15F1 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				A14B53FF234228B90017DD2B /* Assets.xcassets */,
+				A1D4C9E4234CBAAF00AA15F1 /* launchscreen.png */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
+		A1D4C9E7234CBEDE00AA15F1 /* app */ = {
+			isa = PBXGroup;
+			children = (
+				A14B53F8234228B70017DD2B /* AppDelegate.swift */,
+				A14B53FC234228B70017DD2B /* Main.storyboard */,
+				A14B5401234228B90017DD2B /* LaunchScreen.storyboard */,
+			);
+			path = app;
+			sourceTree = "<group>";
+		};
+		A1D4C9E8234CBEF300AA15F1 /* feature */ = {
+			isa = PBXGroup;
+			children = (
+				A14B53FA234228B70017DD2B /* TalkListViewController.swift */,
+				A1D4C9F3234E0C0E00AA15F1 /* TalkDetailViewController.swift */,
+				A1D4C9F1234DD44D00AA15F1 /* AboutViewController.swift */,
+			);
+			path = feature;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,6 +179,7 @@
 				A14B5403234228B90017DD2B /* LaunchScreen.storyboard in Resources */,
 				A14B5400234228B90017DD2B /* Assets.xcassets in Resources */,
 				A14B53FE234228B70017DD2B /* Main.storyboard in Resources */,
+				A1D4C9E5234CBAAF00AA15F1 /* launchscreen.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,8 +211,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A14B53FB234228B70017DD2B /* ViewController.swift in Sources */,
+				A1D4C9F2234DD44D00AA15F1 /* AboutViewController.swift in Sources */,
+				A14B53FB234228B70017DD2B /* TalkListViewController.swift in Sources */,
 				A14B53F9234228B70017DD2B /* AppDelegate.swift in Sources */,
+				A1D4C9F4234E0C0E00AA15F1 /* TalkDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,7 +370,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = kep.mobile.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -352,7 +388,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = kep.mobile.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
