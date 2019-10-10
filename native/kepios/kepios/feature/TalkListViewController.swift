@@ -11,7 +11,7 @@ import kep_common
 
 class TalkListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, TalkListView {
     
-    private var talkListTableData: [Talk] = []
+    private var talkListTableData: [[Talk]] = []
     
     @IBOutlet var tableview: UITableView!
     
@@ -42,23 +42,33 @@ class TalkListViewController: UIViewController, UITableViewDataSource, UITableVi
                 else { return }
 
                 let talkDetailViewController = segue.destination as! TalkDetailViewController
+                let section = selectedPath.section
                 let row = selectedPath.row
-                if (talkListTableData.count <= row) { return }
-                talkDetailViewController.talkId = talkListTableData[row].id
+                if talkListTableData.count <= section || talkListTableData[section].count <= row { return }
+                talkDetailViewController.talkId = talkListTableData[section][row].id
             default: break
         }
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if talkListTableData.count <= section { return 0 }
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if talkListTableData.count <= section { return nil }
+        return talkListTableData[section].first?.timeslot
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
         return talkListTableData.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+         return talkListTableData[section].count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "customcell", for: indexPath) as! TalkListTableViewCell
+        let section = indexPath.section
         let row = indexPath.row
-        if talkListTableData.count <= row { return cell }
-        cell.setup(for: talkListTableData[row])
+        if talkListTableData.count <= section || talkListTableData[section].count <= row { return cell }
+        cell.setup(for: talkListTableData[section][row])
         return cell
     }
 
@@ -67,7 +77,20 @@ class TalkListViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func onSuccessGetTalkList(talkList: [Talk]) {
-        talkListTableData = talkList
+        talkListTableData = []
+        
+        let sections = talkList.map({$0.timeslot}).unique.sorted()
+        
+        for talk in talkList {
+            if talkListTableData.count == 0 ||
+                talkListTableData.last!.first!.timeslot != talk.timeslot  {
+                talkListTableData.append([talk]);
+                continue
+            }
+            let section = sections.index(of: talk.timeslot) ?? 0
+            talkListTableData[section].append(talk)
+        }
+
         self.tableview?.reloadData()
     }
     
@@ -102,5 +125,17 @@ class TalkListTableViewCell : UITableViewCell {
     
     func getTalkId() -> String {
         return talkId
+    }
+}
+
+extension Array where Element : Equatable {
+    var unique: [Element] {
+        var uniqueValues: [Element] = []
+        forEach { item in
+            if !uniqueValues.contains(item) {
+                uniqueValues += [item]
+            }
+        }
+        return uniqueValues
     }
 }

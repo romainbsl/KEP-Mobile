@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A12E1CD3234F66B900DE74DD /* info_header_background.png in Resources */ = {isa = PBXBuildFile; fileRef = A12E1CD2234F66B900DE74DD /* info_header_background.png */; };
 		A14B53F9234228B70017DD2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14B53F8234228B70017DD2B /* AppDelegate.swift */; };
 		A14B53FB234228B70017DD2B /* TalkListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14B53FA234228B70017DD2B /* TalkListViewController.swift */; };
 		A14B53FE234228B70017DD2B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A14B53FC234228B70017DD2B /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A12E1CD2234F66B900DE74DD /* info_header_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info_header_background.png; sourceTree = "<group>"; };
 		A14B53F5234228B70017DD2B /* kepios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kepios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A14B53F8234228B70017DD2B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A14B53FA234228B70017DD2B /* TalkListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkListViewController.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				A14B53FF234228B90017DD2B /* Assets.xcassets */,
+				A12E1CD2234F66B900DE74DD /* info_header_background.png */,
 				A1D4C9E4234CBAAF00AA15F1 /* launchscreen.png */,
 			);
 			path = resources;
@@ -180,6 +183,7 @@
 				A14B5400234228B90017DD2B /* Assets.xcassets in Resources */,
 				A14B53FE234228B70017DD2B /* Main.storyboard in Resources */,
 				A1D4C9E5234CBAAF00AA15F1 /* launchscreen.png in Resources */,
+				A12E1CD3234F66B900DE74DD /* info_header_background.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
