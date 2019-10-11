@@ -63,6 +63,8 @@ class TalkDetailViewController: UIViewController, TalkDetailView {
         descriptionLabel!.text = talk.content
     }
     
+     
+    
     func onFailureGetTalkDetail(e: KotlinException) {
 //        print(e.message ?? "Error")
     }
@@ -72,13 +74,25 @@ class TalkDetailViewController: UIViewController, TalkDetailView {
     }
 }
 
+func maskRoundedImage(image: UIImage, radius: CGFloat) -> UIImage {
+    let imageView: UIImageView = UIImageView(image: image)
+    let layer = imageView.layer
+    layer.masksToBounds = true
+    layer.cornerRadius = radius
+    UIGraphicsBeginImageContext(imageView.bounds.size)
+    layer.render(in: UIGraphicsGetCurrentContext()!)
+    let roundedImage = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+    return roundedImage!
+}
+
 extension UIImageView {
     func load(url: URL) {
         DispatchQueue.global().async { [weak self] in
             if let data = try? Data(contentsOf: url) {
                 if let image = UIImage(data: data) {
                     DispatchQueue.main.async {
-                        self?.image = image
+                        self?.image = maskRoundedImage(image: image,radius: 100)
                     }
                 }
             }

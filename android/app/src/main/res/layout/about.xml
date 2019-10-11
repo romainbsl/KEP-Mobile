@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <ImageView
         android:layout_width="match_parent"
@@ -15,10 +15,44 @@
         android:background="#BFBFBF" />
 
     <TextView
+        android:id="@+id/about_info"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:textSize="14sp"
-        android:text="[Coming Soon]\n About K/E Paris 2019 \n\n - Website\n - Twitter\n - Code of conduct"/>
+        android:layout_height="wrap_content"
+        android:padding="@dimen/text_margin"
+        android:textSize="14sp" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/website_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_margin"
+            android:background="@null"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/website" />
+
+        <ImageButton
+            android:id="@+id/twitter_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_margin"
+            android:background="@null"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/twitter" />
+
+        <ImageButton
+            android:id="@+id/location_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_margin"
+            android:background="@null"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/location" />
+
+    </LinearLayout>
 </LinearLayout>

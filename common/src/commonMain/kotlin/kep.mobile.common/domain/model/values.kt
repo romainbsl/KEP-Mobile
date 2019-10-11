@@ -33,7 +33,8 @@ val about = """
         | - Du language Kotlin
         | - La librairie Ktor
         | - La librairie kotlinx.serialization
-        |La librairie multiplateforme nous avons pu mutualiser:  
+        |
+        |Nous avons pu mutualiser:  
         | - La consommation de notre API        
         | - Le code business (use cases)
         | - La mise en place du pattern MVP
@@ -42,5 +43,7 @@ val about = """
         |${platformSpecificAbout()}
         """.trimMargin()
 
-val twitterUri = "https://twitter.com/kotlin_paris"
+const val twitterUri = "https://twitter.com/kotlin_paris"
 val websiteUri = "${URL_PROTOCOL.name}://$BASE_URL"
+const val placeName = "Epitech Paris"
+val location = 48.815674 to 2.362804

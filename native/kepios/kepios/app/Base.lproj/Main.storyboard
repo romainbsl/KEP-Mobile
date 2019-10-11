@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WKq-BP-Dbt">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
@@ -13,25 +13,64 @@
             <objects>
                 <viewController id="aCr-an-ua6" userLabel="About" customClass="AboutViewController" customModule="kepios" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mS9-qO-GIC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="d0Z-WN-lMS">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="44" width="320" height="475"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="info_header_background.png" translatesAutoresizingMaskIntoConstraints="NO" id="YFT-l5-XjM">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="info_header_background.png" translatesAutoresizingMaskIntoConstraints="NO" id="YFT-l5-XjM">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="200" id="kmF-qq-d3t"/>
+                                            <constraint firstAttribute="height" constant="200" id="1Oo-jP-M55"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[Coming Soon] About K/E Paris 2019   - Website\n  - Twitter - Code of conduct" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tWl-1J-cM7">
-                                        <rect key="frame" x="0.0" y="200" width="414" height="525"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="1000" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tWl-1J-cM7">
+                                        <rect key="frame" x="0.0" y="200" width="320" height="75"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q19-CP-LHv">
+                                        <rect key="frame" x="0.0" y="275" width="320" height="200"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4fx-4F-KDT" userLabel="website">
+                                                <rect key="frame" x="0.0" y="0.0" width="125" height="200"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="125" id="L0S-po-c8U"/>
+                                                </constraints>
+                                                <state key="normal" image="website.png"/>
+                                                <connections>
+                                                    <action selector="onWebsiteClick:" destination="aCr-an-ua6" eventType="touchUpInside" id="MJe-zk-OPX"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bAJ-NI-VJU" userLabel="twitter">
+                                                <rect key="frame" x="125" y="0.0" width="70" height="200"/>
+                                                <state key="normal" image="twitter.png"/>
+                                                <connections>
+                                                    <action selector="onTwitterClick:" destination="aCr-an-ua6" eventType="touchUpInside" id="5Z2-5a-8Di"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U7k-iP-SWH" userLabel="location">
+                                                <rect key="frame" x="195" y="0.0" width="125" height="200"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="125" id="QaP-OQ-OPs"/>
+                                                </constraints>
+                                                <state key="normal" image="location.png"/>
+                                                <connections>
+                                                    <action selector="onLocationClick:" destination="aCr-an-ua6" eventType="touchUpInside" id="sl3-HO-JyP"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="200" id="n79-bc-WwV"/>
+                                        </constraints>
+                                    </stackView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="tWl-1J-cM7" secondAttribute="trailing" constant="10" id="2Pk-eW-dbr"/>
+                                    <constraint firstItem="tWl-1J-cM7" firstAttribute="leading" secondItem="d0Z-WN-lMS" secondAttribute="leading" constant="10" id="Qys-RC-XFK"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -46,6 +85,9 @@
                     <navigationItem key="navigationItem" title="A Propos" id="OVC-zY-UcW">
                         <barButtonItem key="backBarButtonItem" title="Sessions" id="XZe-ii-xMU"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="about_info" destination="tWl-1J-cM7" id="ghy-sv-PJS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9YP-H8-sXa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -56,28 +98,28 @@
             <objects>
                 <tableViewController id="1zZ-Un-S4w" userLabel="Talks" customClass="TalkListViewController" customModule="kepios" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="2KI-ag-RxL" userLabel="TableView">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="customcell" rowHeight="60" id="7UA-M1-fM3" userLabel="TalkCell" customClass="TalkListTableViewCell" customModule="kepios">
-                                <rect key="frame" x="0.0" y="28" width="414" height="60"/>
+                                <rect key="frame" x="0.0" y="28" width="320" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7UA-M1-fM3" id="Osz-mO-ytJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="4bN-X1-Dg9">
-                                            <rect key="frame" x="20" y="5" width="374" height="50"/>
+                                            <rect key="frame" x="20" y="5" width="280" height="50"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Ouverture" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c0I-3H-fJ7" userLabel="Title">
-                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="29"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="280" height="29"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amphitheatre" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rFg-MS-vFc" userLabel="Info">
-                                                    <rect key="frame" x="0.0" y="34" width="374" height="16"/>
+                                                    <rect key="frame" x="0.0" y="34" width="280" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -111,7 +153,7 @@
                     <navigationItem key="navigationItem" title="Kotlin/Everywhere Paris 2019" id="7Ee-rI-1er">
                         <barButtonItem key="rightBarButtonItem" id="FZq-On-DDn">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="mUG-5U-Cya">
-                                <rect key="frame" x="369" y="10" width="25" height="24"/>
+                                <rect key="frame" x="279" y="10" width="25" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <connections>
@@ -134,35 +176,35 @@
             <objects>
                 <viewController id="YQ9-Lz-KiF" userLabel="Talk" customClass="TalkDetailViewController" customModule="kepios" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RJs-S2-gS4">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bSA-he-6VX">
-                                <rect key="frame" x="0.0" y="85.5" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="46.5" width="320" height="475"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="xs3-wJ-tJf" userLabel="Header">
-                                        <rect key="frame" x="0.0" y="2" width="414" height="263"/>
+                                        <rect key="frame" x="0.0" y="2" width="320" height="263"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1sc-MG-QVj">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="10"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="10"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="10" id="s1G-0T-jLe"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Automatisez vos workflows avec Kotlin" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ow8-JS-SdZ" userLabel="Title">
-                                                <rect key="frame" x="0.0" y="10" width="414" height="67"/>
+                                                <rect key="frame" x="0.0" y="10" width="320" height="67"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MF1-i6-LnW">
-                                                <rect key="frame" x="0.0" y="77" width="414" height="10"/>
+                                                <rect key="frame" x="0.0" y="77" width="320" height="10"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="10" id="rWL-Qe-GEF"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dUf-DP-Rhi">
-                                                <rect key="frame" x="0.0" y="87" width="414" height="125"/>
+                                                <rect key="frame" x="0.0" y="87" width="320" height="125"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PeM-06-cZS" userLabel="SpeakerPhoto">
                                                         <rect key="frame" x="111" y="13" width="100" height="100"/>
@@ -182,19 +224,19 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jsa-W9-VmL">
-                                                <rect key="frame" x="0.0" y="212" width="414" height="10"/>
+                                                <rect key="frame" x="0.0" y="212" width="320" height="10"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="10" id="b2b-hM-e7E"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Romain Boisselle" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rb7-zC-GHK" userLabel="Speaker">
-                                                <rect key="frame" x="0.0" y="222" width="414" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="222" width="320" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="09:00 - Salle workshop" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yUY-qP-rp2" userLabel="Time - Room">
-                                                <rect key="frame" x="0.0" y="242.5" width="414" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="242.5" width="320" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -206,12 +248,12 @@
                                         </constraints>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="1000" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ak1-7l-Wgc" userLabel="Description">
-                                        <rect key="frame" x="20" y="270.5" width="375" height="426.5"/>
-                                        <mutableString key="text">Dans ce workshop, nous verrons une nouvelle manière de coder des serveurs en Kotlin, grâce à une librarie développée par Jetbrains : Ktor, un framework permettant de créer un serveur entièrement asynchrone grâce à la puissance du langage Kotlin et de ses coroutines.
+                                        <rect key="frame" x="20" y="270.5" width="281" height="568.5"/>
+                                        <string key="text">Dans ce workshop, nous verrons une nouvelle manière de coder des serveurs en Kotlin, grâce à une librarie développée par Jetbrains : Ktor, un framework permettant de créer un serveur entièrement asynchrone grâce à la puissance du langage Kotlin et de ses coroutines.
 
 Nous commencerons par présenter Ktor et ses utilisations les plus simples pour créer, en quelques lignes, un serveur simple permettant de servir une API et du contenu statique. Nous verrons ensuite comment utiliser certaines des fonctionalités plus avancées, notemment liées à la sécurité et aux systèmes complexes.
 
-Enfin, nous verrons comment intégrer d'autres librairies utilisant Kotlin et permettant d'architecturer notre code et facilitant grandement la gestion de notre base de données. En 3h30, vous aurez un serveur léger, puissant, lisible et sécurisé !</mutableString>
+Enfin, nous verrons comment intégrer d'autres librairies utilisant Kotlin et permettant d'architecturer notre code et facilitant grandement la gestion de notre base de données. En 3h30, vous aurez un serveur léger, puissant, lisible et sécurisé !</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -262,7 +304,7 @@ Enfin, nous verrons comment intégrer d'autres librairies utilisant Kotlin et pe
             <objects>
                 <navigationController id="WKq-BP-Dbt" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="I9k-HE-bRd">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="1" green="0.96078431372549022" blue="0.50980392156862742" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
@@ -277,5 +319,8 @@ Enfin, nous verrons comment intégrer d'autres librairies utilisant Kotlin et pe
     </scenes>
     <resources>
         <image name="info_header_background.png" width="172.80000305175781" height="84"/>
+        <image name="location.png" width="64" height="64"/>
+        <image name="twitter.png" width="64" height="64"/>
+        <image name="website.png" width="64" height="64"/>
     </resources>
 </document>

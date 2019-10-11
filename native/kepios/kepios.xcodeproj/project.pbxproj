@@ -15,6 +15,9 @@
 		A14B5403234228B90017DD2B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A14B5401234228B90017DD2B /* LaunchScreen.storyboard */; };
 		A14B540B23422BDE0017DD2B /* kep_common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A14B540A23422BDE0017DD2B /* kep_common.framework */; };
 		A14B540C23422BDE0017DD2B /* kep_common.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A14B540A23422BDE0017DD2B /* kep_common.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A177E2552350C9A400B995F8 /* website.png in Resources */ = {isa = PBXBuildFile; fileRef = A177E2522350C9A400B995F8 /* website.png */; };
+		A177E2562350C9A400B995F8 /* location.png in Resources */ = {isa = PBXBuildFile; fileRef = A177E2532350C9A400B995F8 /* location.png */; };
+		A177E2572350C9A400B995F8 /* twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = A177E2542350C9A400B995F8 /* twitter.png */; };
 		A1D4C9E5234CBAAF00AA15F1 /* launchscreen.png in Resources */ = {isa = PBXBuildFile; fileRef = A1D4C9E4234CBAAF00AA15F1 /* launchscreen.png */; };
 		A1D4C9F2234DD44D00AA15F1 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D4C9F1234DD44D00AA15F1 /* AboutViewController.swift */; };
 		A1D4C9F4234E0C0E00AA15F1 /* TalkDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D4C9F3234E0C0E00AA15F1 /* TalkDetailViewController.swift */; };
@@ -44,6 +47,9 @@
 		A14B5402234228B90017DD2B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A14B5404234228B90017DD2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A14B540A23422BDE0017DD2B /* kep_common.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = kep_common.framework; path = "../../common/build/xcode-frameworks/kep_common.framework"; sourceTree = "<group>"; };
+		A177E2522350C9A400B995F8 /* website.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = website.png; sourceTree = "<group>"; };
+		A177E2532350C9A400B995F8 /* location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = location.png; sourceTree = "<group>"; };
+		A177E2542350C9A400B995F8 /* twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitter.png; sourceTree = "<group>"; };
 		A1D4C9E4234CBAAF00AA15F1 /* launchscreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launchscreen.png; sourceTree = "<group>"; };
 		A1D4C9F1234DD44D00AA15F1 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		A1D4C9F3234E0C0E00AA15F1 /* TalkDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkDetailViewController.swift; sourceTree = "<group>"; };
@@ -95,6 +101,9 @@
 				A14B53FF234228B90017DD2B /* Assets.xcassets */,
 				A12E1CD2234F66B900DE74DD /* info_header_background.png */,
 				A1D4C9E4234CBAAF00AA15F1 /* launchscreen.png */,
+				A177E2532350C9A400B995F8 /* location.png */,
+				A177E2542350C9A400B995F8 /* twitter.png */,
+				A177E2522350C9A400B995F8 /* website.png */,
 			);
 			path = resources;
 			sourceTree = "<group>";
@@ -180,10 +189,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				A14B5403234228B90017DD2B /* LaunchScreen.storyboard in Resources */,
+				A177E2572350C9A400B995F8 /* twitter.png in Resources */,
 				A14B5400234228B90017DD2B /* Assets.xcassets in Resources */,
 				A14B53FE234228B70017DD2B /* Main.storyboard in Resources */,
 				A1D4C9E5234CBAAF00AA15F1 /* launchscreen.png in Resources */,
+				A177E2562350C9A400B995F8 /* location.png in Resources */,
 				A12E1CD3234F66B900DE74DD /* info_header_background.png in Resources */,
+				A177E2552350C9A400B995F8 /* website.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
