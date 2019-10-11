@@ -1,5 +1,8 @@
 package kep.mobile.common.domain.model
 
+import kep.mobile.common.data.BASE_URL
+import kep.mobile.common.data.URL_PROTOCOL
+
 const val AMPHITHEATRE = "Amphitheatre"
 const val SECOND_FLOOR = "2e etage"
 const val CODELAB = "Salle Codelab"
@@ -21,3 +24,23 @@ val timeslots = mapOf(
         "18:10" to listOf("gradle-dsl", "study-lib-coroutines"),
         "18:40" to listOf("cloture")
 )
+
+expect fun platform(): String
+expect fun platformSpecificAbout(): String
+
+val about = """ 
+        |Pour sa partie multiplateforme, cette application a été développée a l'aide:
+        | - Du language Kotlin
+        | - La librairie Ktor
+        | - La librairie kotlinx.serialization
+        |La librairie multiplateforme nous avons pu mutualiser:  
+        | - La consommation de notre API        
+        | - Le code business (use cases)
+        | - La mise en place du pattern MVP
+        |
+        |Pour la partie ${platform()} nous avons utilisé:
+        |${platformSpecificAbout()}
+        """.trimMargin()
+
+val twitterUri = "https://twitter.com/kotlin_paris"
+val websiteUri = "${URL_PROTOCOL.name}://$BASE_URL"

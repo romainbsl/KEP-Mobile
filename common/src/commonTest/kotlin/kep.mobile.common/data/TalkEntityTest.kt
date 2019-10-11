@@ -39,7 +39,7 @@ class TalkEntityTest {
 
         assertEquals(talk.id, "androidx-coroutines")
         assertEquals(talk.title, "AndroidX + coroutines = <3")
-        assertEquals(talk.description, "Le framework des coroutines est un outil révolutionnaire pour gérer l'asynchronisme et la concurrence.")
+        assertEquals(talk.content, "Le framework des coroutines est un outil révolutionnaire pour gérer l'asynchronisme et la concurrence.")
         assertEquals(talk.type, Type.TALK)
         assertSame(talk.speakers, FakeData.Model.speakers)
     }
