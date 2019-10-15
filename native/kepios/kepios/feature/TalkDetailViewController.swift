@@ -6,7 +6,7 @@
 //  Copyright © 2019 Romain Bsl. All rights reserved.
 //
 import UIKit
-import kep_common
+import kepcommon
 
 class TalkDetailViewController: UIViewController, TalkDetailView {
     var talkId : String = ""

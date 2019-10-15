@@ -25,7 +25,7 @@ kotlin {
         iOSTarget("ios") {
             binaries {
                 framework {
-                    baseName = "kep-common"
+                    baseName = "kepcommon"
                 }
             }
         }

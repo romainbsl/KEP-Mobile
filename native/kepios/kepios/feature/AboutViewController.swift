@@ -7,7 +7,7 @@
 //
 import UIKit
 import MapKit
-import kep_common
+import kepcommon
 
 class AboutViewController: UIViewController, AboutInfoView {
     

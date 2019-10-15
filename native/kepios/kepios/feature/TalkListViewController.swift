@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import kep_common
+import kepcommon
 
 class TalkListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, TalkListView {
     
